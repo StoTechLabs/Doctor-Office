@@ -1,2 +1,2 @@
-require 'patient'
-require 'rspec'
+# require 'spec_helper'
+

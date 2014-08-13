@@ -1,15 +1,4 @@
-require 'doctor'
-require 'rspec'
-require 'PG'
-
-DB = PG.connect(:dbname => 'test_doctor_office')
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM doctor *;")
-  end
-end
-
+require 'spec_helper'
 
 describe Doctor do
 
