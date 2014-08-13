@@ -7,5 +7,11 @@ describe Patient do
     expect(test_patient).to be_an_instance_of Patient
   end
 
+  it 'returns the name, birthday and doctor id' do
+    test_patient = Patient.new({:name => 'Josh', :birthday => '1985-12-01', :doctor_id => 1})
+    expect(test_patient.name).to eq 'Josh'
+    expect(test_patient.birthday).to eq '1985-12-01'
+    expect(test_patient.doctor_id).to eq 1
+  end
 end
 
