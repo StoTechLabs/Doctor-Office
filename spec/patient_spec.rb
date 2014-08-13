@@ -18,11 +18,19 @@ describe Patient do
     expect(Patient.all). to eq []
   end
 
-  it 'saves the patient tothe database' do
+  it 'saves the patient to the database' do
     test_patient = Patient.new({:name => 'Josh', :birthday => '1985-12-01', :doctor_id => 1})
     test_patient.save
     expect(Patient.all).to eq [test_patient]
   end
+
+  it 'is the same patient if it has the same name and birthday' do
+    test_patient1 = Patient.new(:name => 'Brown', :birthday => 2)
+    test_patient2 = Patient.new(:name => 'Brown', :birthday => 2)
+    expect(test_patient1).to eq test_patient2
+  end
+
+
 
 
 end
