@@ -7,5 +7,9 @@ class Patient
     @doctor_id = attributes[:doctor_id]
   end
 
+  def Patient.all
+    patients = []
+  end
+
 
 end

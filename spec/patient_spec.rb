@@ -13,5 +13,10 @@ describe Patient do
     expect(test_patient.birthday).to eq '1985-12-01'
     expect(test_patient.doctor_id).to eq 1
   end
+
+  it 'creates an empty array to store patient information' do
+    expect(Patient.all). to eq []
+  end
+
 end
 
