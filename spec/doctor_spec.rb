@@ -33,5 +33,13 @@ describe Doctor do
     expect(Doctor.all).to eq [test_doctor]
   end
 
+  it 'is the same doctor if it has the same name and specialty id' do
+    test_doctor1 = Doctor.new(:name => 'Brown', :specialty_id => 2)
+    test_doctor2 = Doctor.new(:name => 'Brown', :specialty_id => 2)
+    expect(test_doctor1).to eq test_doctor2
+  end
+
+
+
 
 end
