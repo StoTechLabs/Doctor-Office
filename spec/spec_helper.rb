@@ -1,6 +1,6 @@
 require 'rspec'
 require 'doctor'
-# require 'patient'
+require 'patient'
 require 'pg'
 
 
