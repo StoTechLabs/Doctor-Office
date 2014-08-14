@@ -23,4 +23,8 @@ class Specialty
     specialty
   end
 
+  def ==(another_specialty)
+    self.name == another_specialty.name
+  end
+
 end
