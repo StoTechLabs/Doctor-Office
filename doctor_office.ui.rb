@@ -1,11 +1,18 @@
 require 'pg'
 require './lib/doctor'
 require './lib/patient'
+require './lib/specialty'
+require './lib/insurance'
+
+
 
 DB = PG.connect(:dbname => 'doctors_office')
 
 @current_doctor = nil
 @current_patient = nil
+@current_specialty = nil
+@current_insurance = nil
+
 
 def main_menu
   loop do
@@ -30,8 +37,22 @@ end
 def add_doctor
   puts "Please enter the Doctor's Name"
   choice = gets.chomp
-  Doctor.new({:name => choice, :specialty_id => '1'}).save
+  sleep(1.0)
   puts "This doctor has been added"
+  puts "Please enter the Doctor's Specialty"
+  specialty_name = gets.chomp
+  @current_specialty = Specialty.new({:name => specialty_name})
+  @current_specialty.save
+  sleep(1.0)
+  puts "This specialty has been added."
+  puts "Please enter the insurance that the Doctor accepts"
+  insurance_name = gets.chomp
+  @current_insurance = Insurance.new({:name => insurance_name})
+  @current_insurance.save
+  sleep(1.0)
+  puts "Insurance has been added"
+  @current_doctor = Doctor.new({:name => choice, :specialty_id => @current_specialty.id, :insurance_id => @current_insurance.id})
+  @current_doctor.save
   sleep(1.0)
   main_menu
 end

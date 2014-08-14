@@ -16,7 +16,7 @@ class Insurance
     insurance = []
     results.each do |result|
       name = result['name']
-      insurance << Insurance.new({:name => 'name'})
+      insurance << Insurance.new({:name => name})
     end
     insurance
   end
