@@ -20,4 +20,8 @@ class Insurance
     end
     insurance
   end
+
+    def ==(another_ins)
+      self.name == another_ins.name
+    end
 end
