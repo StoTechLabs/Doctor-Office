@@ -1,14 +1,16 @@
 class Patient
-  attr_reader :name, :birthday, :doctor_id
+  attr_reader :name, :birthday, :doctor_id, :id
 
   def initialize(attributes)
     @name = attributes[:name]
     @birthday = attributes[:birthday]
     @doctor_id = attributes[:doctor_id]
+    @id = attributes[:id]
   end
 
   def save
-    results = DB.exec("INSERT INTO patient (name, birthday, doctor_id) VALUES ('#{name}', '#{birthday}', #{doctor_id});")
+    results = DB.exec("INSERT INTO patient (name, birthday, doctor_id) VALUES ('#{name}', '#{birthday}', #{doctor_id}) RETURNING id;")
+    @id = results.first['id'].to_i
   end
 
 

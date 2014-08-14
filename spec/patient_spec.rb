@@ -30,7 +30,11 @@ describe Patient do
     expect(test_patient1).to eq test_patient2
   end
 
-
+  it 'sets the patient id when it is saved' do
+    test_patient = Patient.new({:name => 'Josh', :birthday => '1985-12-01', :doctor_id => 1})
+    test_patient.save
+    expect(test_patient.id).to be_an_instance_of Fixnum
+  end
 
 
 end
