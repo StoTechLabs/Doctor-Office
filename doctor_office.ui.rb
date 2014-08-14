@@ -3,6 +3,7 @@ require './lib/doctor'
 require './lib/patient'
 require './lib/specialty'
 require './lib/insurance'
+require 'pry'
 
 
 
@@ -18,7 +19,7 @@ def main_menu
   loop do
     system 'clear'
     puts '***DOCTORS OFFICE***'
-    puts  "Type 'a' to add a Doctor, Type 'l' to list all doctors or Type 'x' to exit the program"
+    puts  "Type 'a' to add a Doctor, Type 'l' to list doctors by specialty or Type 'x' to exit the program"
     choice = gets.chomp
     if choice == 'a'
       add_doctor
@@ -57,6 +58,28 @@ def add_doctor
   main_menu
 end
 
+def list_doctor
+  if Doctor.all.empty?
+    puts "There are no doctors in the system yet."
+    sleep(1.0)
+    main_menu
+  end
+  puts "Type in the specialty that you would like to list the Doctor's for"
+  specialty_choice = gets.chomp
+  Specialty.all.each do |specialty|
+    if specialty.name == specialty_choice
+      @current_specialty = specialty
+    end
+  end
+  puts "Here is the list of doctors"
+  binding.pry
+  Doctor.all.each do |doctor|
+    if doctor.specialty_id == @current_specialty.id
+        puts doctor.name
+    end
+  end
 
+    sleep(1.0)
+end
 
 main_menu
