@@ -1,6 +1,7 @@
 require 'rspec'
 require 'doctor'
 require 'patient'
+require 'specialty'
 require 'pg'
 
 
